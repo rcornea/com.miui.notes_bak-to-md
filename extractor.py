@@ -1,13 +1,15 @@
-# 0.1 - this script works if you use v5.x.x of miui.notes app
-# the adb backup contains a sqlite.db which we can process 
-import sqlite3
+# WIP - 0.2 - v7.x.x com.miui.notes AllBackup outputs zip file containing a miui_bak/_tmp_bak bitstream
+# goal: _tmp_bak to individual .md (Obsidian notes)
+# _tmp_bak is an unknown bitstream format (could be Kryo) which we need to process
+
+# import sqlite3
 import os
 import shutil
 import re
 
 # Configuration
-db_path = 'apps/com.miui.notes/db/note.db'  # Path to the database
-files_dir = 'apps/com.miui.notes/f/'        # Path to image files (adjust if different)
+files_dir = 'apps/com.miui.notes/miui_att/'                # Path to image files
+db_path = 'apps/com.miui.notes/miui_bak/_tmp_bak'   # Path to the notes backup bistream
 output_dir = 'exported_notes'               # Output directory for Markdown files
 images_output_dir = os.path.join(output_dir, 'images')  # Subdirectory for images
 
@@ -16,12 +18,12 @@ os.makedirs(output_dir, exist_ok=True)
 os.makedirs(images_output_dir, exist_ok=True)
 
 # Connect to the database
-conn = sqlite3.connect(db_path)
-cursor = conn.cursor()
+# conn = sqlite3.connect(db_path)
+# cursor = conn.cursor()
 
 # Query all notes (adjust column names as needed)
-cursor.execute("SELECT id, title, content, created_date FROM notes")
-notes = cursor.fetchall()
+# cursor.execute("SELECT id, title, content, created_date FROM notes")
+# notes = cursor.fetchall()
 
 for note in notes:
     note_id, title, content, created_date = note
