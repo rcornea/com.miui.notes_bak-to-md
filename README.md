@@ -1,2 +1,6 @@
-# com.miui.notes_bak-to-md
-takes a system MIUI Notes app's backup database and recovers the notes from it as Markdown files (Obsidian format)
+# Xiaomi MIUI Notes app AllBackup data backup to individual .md files (Obsidian notes format)
+
+this small python script should process the system com.miui.notes (v7.x) data backup file
+and recover your notes from the bitstream file as Markdown files
+
+as a goal, this should preserve all formatting and note data, including embedded files
